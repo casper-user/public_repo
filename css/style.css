@@ -1,0 +1,359 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.calculator-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Calculator Main Body */
+.calculator {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    max-width: 400px;
+}
+
+/* Display */
+.display {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.previous-operand {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    min-height: 1.5rem;
+}
+
+.current-operand {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 300;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* Button Grid */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/* Button Styles */
+.btn {
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Number buttons */
+.btn.number {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.btn.number:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Operation buttons */
+.btn.operation {
+    background: rgba(255, 165, 0, 0.8);
+    color: white;
+    font-weight: 600;
+}
+
+.btn.operation:hover {
+    background: rgba(255, 165, 0, 1);
+}
+
+/* Function buttons */
+.btn.function {
+    background: rgba(108, 117, 125, 0.8);
+    color: white;
+}
+
+.btn.function:hover {
+    background: rgba(108, 117, 125, 1);
+}
+
+/* Equals button */
+.btn.equals {
+    background: rgba(40, 167, 69, 0.8);
+    color: white;
+    font-weight: 600;
+}
+
+.btn.equals:hover {
+    background: rgba(40, 167, 69, 1);
+}
+
+/* Zero button spans 2 columns */
+.btn.zero {
+    grid-column: span 1;
+}
+
+/* Scientific buttons */
+.scientific-panel {
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.scientific-panel.active {
+    opacity: 1;
+    max-height: 200px;
+}
+
+.btn.scientific {
+    background: rgba(220, 53, 69, 0.8);
+    color: white;
+    font-size: 1rem;
+    height: 45px;
+}
+
+.btn.scientific:hover {
+    background: rgba(220, 53, 69, 1);
+}
+
+/* Toggle Scientific Mode Button */
+.toggle-scientific {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+.toggle-scientific:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.toggle-scientific.active {
+    background: rgba(40, 167, 69, 0.8);
+}
+
+/* History Panel */
+.history-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+    transform: translateX(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.history-panel.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.history-panel h3 {
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.history-list {
+    max-height: 350px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.history-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.history-expression {
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+.history-result {
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.clear-history {
+    width: 100%;
+    background: rgba(220, 53, 69, 0.8);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.clear-history:hover {
+    background: rgba(220, 53, 69, 1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .calculator-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .calculator {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .history-panel {
+        width: 100%;
+        max-width: 350px;
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    
+    .history-panel.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .btn {
+        height: 55px;
+        font-size: 1.1rem;
+    }
+    
+    .current-operand {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator {
+        padding: 20px;
+    }
+    
+    .btn {
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .current-operand {
+        font-size: 1.8rem;
+    }
+    
+    .scientific-panel {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calculator {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Scrollbar styling for history */
+.history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}

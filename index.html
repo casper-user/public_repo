@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="display">
+                <div class="previous-operand" id="previous-operand"></div>
+                <div class="current-operand" id="current-operand">0</div>
+            </div>
+            
+            <div class="buttons">
+                <!-- Function buttons -->
+                <button class="btn function" data-clear>C</button>
+                <button class="btn function" data-delete>⌫</button>
+                <button class="btn function" data-operation="%" title="Percentage">%</button>
+                <button class="btn operation" data-operation="÷">÷</button>
+                
+                <!-- Number buttons row 1 -->
+                <button class="btn number" data-number="7">7</button>
+                <button class="btn number" data-number="8">8</button>
+                <button class="btn number" data-number="9">9</button>
+                <button class="btn operation" data-operation="×">×</button>
+                
+                <!-- Number buttons row 2 -->
+                <button class="btn number" data-number="4">4</button>
+                <button class="btn number" data-number="5">5</button>
+                <button class="btn number" data-number="6">6</button>
+                <button class="btn operation" data-operation="-">-</button>
+                
+                <!-- Number buttons row 3 -->
+                <button class="btn number" data-number="1">1</button>
+                <button class="btn number" data-number="2">2</button>
+                <button class="btn number" data-number="3">3</button>
+                <button class="btn operation" data-operation="+">+</button>
+                
+                <!-- Bottom row -->
+                <button class="btn number zero" data-number="0">0</button>
+                <button class="btn function" data-decimal>.</button>
+                <button class="btn equals" data-equals>=</button>
+                
+                <!-- Scientific functions -->
+                <div class="scientific-panel">
+                    <button class="btn scientific" data-operation="√" title="Square Root">√</button>
+                    <button class="btn scientific" data-operation="x²" title="Square">x²</button>
+                    <button class="btn scientific" data-operation="x³" title="Cube">x³</button>
+                    <button class="btn scientific" data-operation="sin" title="Sine">sin</button>
+                    <button class="btn scientific" data-operation="cos" title="Cosine">cos</button>
+                    <button class="btn scientific" data-operation="tan" title="Tangent">tan</button>
+                    <button class="btn scientific" data-operation="log" title="Logarithm">log</button>
+                    <button class="btn scientific" data-operation="ln" title="Natural Log">ln</button>
+                    <button class="btn scientific" data-operation="π" title="Pi">π</button>
+                    <button class="btn scientific" data-operation="e" title="Euler's number">e</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Toggle for scientific mode -->
+        <button class="toggle-scientific" id="toggle-scientific">
+            <span>Scientific Mode</span>
+        </button>
+        
+        <!-- History panel -->
+        <div class="history-panel" id="history-panel">
+            <h3>History</h3>
+            <div class="history-list" id="history-list"></div>
+            <button class="btn clear-history" id="clear-history">Clear History</button>
+        </div>
+    </div>
+    
+    <script src="js/calculator.js"></script>
+</body>
+</html>
